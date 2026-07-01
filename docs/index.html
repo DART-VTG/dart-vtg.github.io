@@ -368,6 +368,16 @@
       font-weight: 800;
     }
 
+    .ood-table th:last-child,
+    .ood-table td:last-child {
+      width: 20%;
+    }
+
+    .ood-table th:nth-child(2),
+    .ood-table td:nth-child(2) {
+      width: 24%;
+    }
+
     .bibtex {
       overflow-x: auto;
       margin: 0;
@@ -548,12 +558,12 @@
             </table>
           </div>
           <div class="result-table">
-            <table>
+            <table class="ood-table">
               <thead>
                 <tr>
                   <th>Split</th>
                   <th>TAG mIoU</th>
-                  <th>DART mIoU</th>
+                  <th class="score-best">DART mIoU</th>
                 </tr>
               </thead>
               <tbody>
