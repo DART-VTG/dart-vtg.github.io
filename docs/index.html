@@ -268,36 +268,6 @@
       font-size: 14px;
     }
 
-    .stat-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 28px;
-    }
-
-    .stat {
-      min-height: 134px;
-      padding: 20px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--white);
-    }
-
-    .stat strong {
-      display: block;
-      color: var(--blue);
-      font-size: clamp(30px, 4vw, 44px);
-      line-height: 1;
-    }
-
-    .stat span {
-      display: block;
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.45;
-    }
-
     .pipeline {
       overflow: hidden;
       border: 1px solid var(--line);
@@ -388,33 +358,6 @@
       font-weight: 800;
     }
 
-    .frame-strip {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 24px;
-    }
-
-    .frame {
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--white);
-    }
-
-    .frame img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-    }
-
-    .frame p {
-      margin: 0;
-      padding: 10px 12px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
     .bibtex {
       overflow-x: auto;
       margin: 0;
@@ -424,12 +367,6 @@
       background: #111820;
       color: #edf4fb;
       font: 13px / 1.55 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-    }
-
-    .footer {
-      padding: 34px 0 48px;
-      color: var(--muted);
-      font-size: 14px;
     }
 
     @media (max-width: 820px) {
@@ -466,9 +403,7 @@
         grid-template-columns: 1fr;
       }
 
-      .stat-grid,
-      .method-grid,
-      .frame-strip {
+      .method-grid {
         grid-template-columns: 1fr;
       }
 
@@ -486,7 +421,6 @@
         <a href="#abstract">Abstract</a>
         <a href="#method">Method</a>
         <a href="#results">Results</a>
-        <a href="#example">Example</a>
         <a href="#citation">Citation</a>
       </div>
     </div>
@@ -500,7 +434,7 @@
       <img src="assets/frame4_55s_landed.png" alt="">
     </div>
     <div class="hero-content">
-      <div class="venue">ECCV 2026 Submission</div>
+      <div class="venue">ECCV 2026</div>
       <h1>DART</h1>
       <p class="subtitle">Difficulty-Adaptive Routing for Zero-Shot Video Temporal Grounding</p>
       <p class="authors">
@@ -508,9 +442,8 @@
         Singapore University of Technology and Design, Wuhan University, University of California, Merced
       </p>
       <div class="hero-actions">
-        <a class="button primary" href="assets/dart-paper.pdf">Paper PDF</a>
+        <span class="button primary disabled" aria-disabled="true">Paper PDF</span>
         <a class="button" href="#citation">BibTeX</a>
-        <span class="button disabled" aria-disabled="true">Code Coming Soon</span>
       </div>
     </div>
   </header>
@@ -529,20 +462,6 @@
           <p>
             DART couples query-conditioned keyframe selection with a routing signal from the DPP spectrum. Simple queries use a fast direct path, while complex queries use Temporal Markup Prompting for structured reasoning.
           </p>
-          <div class="stat-grid">
-            <div class="stat">
-              <strong>+3.34</strong>
-              <span>mIoU over TAG on ActivityNet Captions in the IID zero-shot setting.</span>
-            </div>
-            <div class="stat">
-              <strong>+3.24</strong>
-              <span>mIoU over TAG on Charades-STA in the IID zero-shot setting.</span>
-            </div>
-            <div class="stat">
-              <strong>7x</strong>
-              <span>fewer input frames than strong zero-shot feature-matching baselines.</span>
-            </div>
-          </div>
         </div>
         <div>
           <div class="video-shell">
@@ -565,7 +484,7 @@
           </p>
         </div>
         <div class="pipeline">
-          <img src="assets/pipeline.png" alt="DART pipeline with query-conditioned DPP, spectral difficulty routing, and dual-path temporal localization.">
+          <img src="assets/figure2.png" alt="Figure 2 from the DART paper, showing query-conditioned DPP, spectral difficulty routing, and dual-path temporal localization.">
         </div>
         <div class="method-grid">
           <article class="method-card">
@@ -659,39 +578,6 @@
       </div>
     </section>
 
-    <section id="example">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="eyebrow">Example</p>
-          <h2>A hard query needs the full event span.</h2>
-          <p class="lead">
-            The target query contains the temporal word "after." A short match around the landing frame misses the preceding flip and dismount stages.
-          </p>
-        </div>
-        <div class="frame-strip">
-          <figure class="frame">
-            <img src="assets/frame1_49s_handstand.png" alt="Gymnast in a handstand on parallel bars at 49 seconds.">
-            <p>49s: setup before release</p>
-          </figure>
-          <figure class="frame">
-            <img src="assets/frame2_51s_midair_flip.png" alt="Gymnast flipping in mid-air at 51 seconds.">
-            <p>51s: mid-air flip</p>
-          </figure>
-          <figure class="frame">
-            <img src="assets/frame3_53s_descending.png" alt="Gymnast descending toward the mat at 53 seconds.">
-            <p>53s: dismount phase</p>
-          </figure>
-          <figure class="frame">
-            <img src="assets/frame4_55s_landed.png" alt="Gymnast standing after landing on the mat at 55 seconds.">
-            <p>55s: landed on the mat</p>
-          </figure>
-        </div>
-        <p class="caption">
-          Ground truth: [48.78s, 67.93s]. DART aims to cover the ordered event instead of matching only the final visual state.
-        </p>
-      </div>
-    </section>
-
     <section id="citation">
       <div class="wrap">
         <div class="section-head">
@@ -708,10 +594,5 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="wrap">
-      Project page for DART. This static page is ready for GitHub Pages from the <code>docs/</code> folder.
-    </div>
-  </footer>
 </body>
 </html>
